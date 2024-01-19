@@ -1,0 +1,60 @@
+{
+	"Import Sequelize":{
+    "prefix": "impseq",
+    "body": [
+      "const { Model, DataTypes } = require('sequelize');"
+      "//name your table",
+      "const ${1:TableName} = '${1:TableName}';",
+      "//name your schema",
+      "const ${2:SchemaName} = {",
+      "   ${3:Id}: {",
+      "       allowNull: false,",
+      "       primaryKey: true,",
+      "       type: DataTypes.${4|UUID,STRING,INTEGER|}",
+      "   },",
+      "   //add your columns using the addseqcol snippet",
+      "};",
+      "//name your model",
+      "class ${5:ModelName} extends Model {",
+      "   static config(sequelize) {",
+      "       return {",
+      "           sequelize,",
+      "           tableName: ${1:TableName},",
+      "           modelName: '${5:ModelName}',",
+      "           timestamps: ${6|true,false|},",
+      "        }",
+      "   }",
+      "//add your associations",
+      "   static associate(models) {",
+      "   //Create your associations here use addseqbelongsto, addseqhasmany",
+      "     ${7}",
+      "   }"
+      "}",
+      "//export your model",
+      "module.exports = {${5:ModelName}, ${2:SchemaName}};",
+    ]
+  },
+  "Add Sequelize Column":{
+    "prefix": "addseqcol",
+    "body": [
+      "${1:ColumnName}: {",
+      "   allowNull: ${2|true,false|},",
+      "   type: DataTypes.${4|STRING,TEXT,BOOLEAN,INTEGER,FLOAT,REAL,DOUBLE,DECIMAL,DATE,DATEONLY,UUID,JSON|}",
+      "},",
+    ]
+  },
+  "Add BelongsTo Association":{
+    "prefix": "addseqbelongsto",
+    "body": [
+      "this.belongsTo(models.${1:RefModel}, { as: '${2:LabelField}', foreignKey: '${3:foreignKey}' });"
+    ]
+  },
+  "Add HasMany Association":{
+    "prefix": "addseqhasmany",
+    "body": [
+      "this.hasMany(models.${1:RefModel}, { as: '${2:LabelField}', foreignKey: '${3:foreignKey}' });"
+    ]
+  },
+  }
+
+}
