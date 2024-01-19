@@ -12,10 +12,31 @@
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "sequelize-helper",
+          "title": "Sequelize Helper",
+          "icon": "./resources/image.svg"
+        }
+      ]
+    },
+    "views": {
+      "sequelize-helper": [
+        {
+          "id": "list-models",
+          "name": "Models"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "sequelizeextensionhelper.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "sequelizeextensionhelper.generateIndex",
+        "title": "Generate Index"
       }
     ],
     "snippets": [
