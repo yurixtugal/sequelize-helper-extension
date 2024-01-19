@@ -36,7 +36,11 @@
       },
       {
         "command": "sequelizeextensionhelper.generateIndex",
-        "title": "Generate Index"
+        "title": "Generate Sequelize Index.js"
+      },
+      {
+        "command": "sequelizeextensionhelper.generateConnection",
+        "title": "Generate Sequelize Connection Sequelize.js"
       }
     ],
     "snippets": [
